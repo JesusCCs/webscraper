@@ -21,15 +21,25 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        leerWeb();
+
+        while (true) {
+
+        }
+
     }
 
-    private static void leerWeb() {
+    private static String leerIBEX() {
         try(InputStream is = url.openStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-            br.lines().forEach(System.out::println);
+
+            String lineaIBEX = br.lines().filter(linea -> linea.contains("IBEX 35") && linea.contains("DifFlBj"))
+                    .findFirst().orElse(null);
+
+            return lineaIBEX != null ? lineaIBEX.split("</td><td>")[1] : null;
+
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 }

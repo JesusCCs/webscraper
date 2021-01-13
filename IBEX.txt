@@ -1,0 +1,4 @@
+
+13/01/2021,23:51:18,IBEX35,8.361,10. Datos de tabla ->  Anterior: 8.345,90. Último: 8.361,10. Diferencia: 0,18. Máximo: 8.386,60. Mínimo: 8.318,70. Fecha: 13/01/2021. Hora: 17:38:00. Diferencia año: 3,56
+13/01/2021,23:51:48,IBEX35,8.361,10. Datos de tabla ->  Anterior: 8.345,90. Último: 8.361,10. Diferencia: 0,18. Máximo: 8.386,60. Mínimo: 8.318,70. Fecha: 13/01/2021. Hora: 17:38:00. Diferencia año: 3,56
+13/01/2021,23:52:19,IBEX35,8.361,10. Datos de tabla ->  Anterior: 8.345,90. Último: 8.361,10. Diferencia: 0,18. Máximo: 8.386,60. Mínimo: 8.318,70. Fecha: 13/01/2021. Hora: 17:38:00. Diferencia año: 3,56

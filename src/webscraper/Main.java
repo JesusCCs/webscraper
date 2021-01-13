@@ -3,7 +3,8 @@ package webscraper;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -11,6 +12,8 @@ public class Main {
     static URL url;
 
     static final String ARCHIVO = "IBEX.txt";
+
+    static final int TIEMPO_ESPERA = 30; // segundos;
 
     static {
         try {
@@ -20,16 +23,20 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        leerTablaIBEX();
+        while (true) {
+            final String linea = leerTablaIBEX();
+            escribirLog(linea);
+            Thread.sleep(TIEMPO_ESPERA * 1000);
+        }
 
     }
 
-    private static void escribirLog() {
+    private static void escribirLog(String linea) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO,true))) {
-
-
+                bw.write(linea + "\n");
+                System.out.println("Línea escrita");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,9 +64,11 @@ public class Main {
                     hora = ultimaLinea[2].split(">")[1],
                     dif_anyo = ultimaLinea[3].split(">")[1];
 
+            String fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy,HH:mm:ss"));
 
-
-            return null;
+            return fechaHora + "," + "IBEX35" + "," + ultimo
+                    + ". Datos de tabla -> " + " Anterior: " + anterior + ". Último: " + ultimo + ". Diferencia: " + dif +
+                    ". Máximo: " + maximo + ". Mínimo: " + minimo + ". Fecha: " + fecha + ". Hora: " + hora + ". Diferencia año: " + dif_anyo;
 
         } catch (IOException e) {
             e.printStackTrace();
